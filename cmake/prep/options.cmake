@@ -65,5 +65,5 @@ elseif(UNIX)  # Linux
     option(SUNSHINE_ENABLE_PORTAL
             "Enable XDG portal grab if available" ON)
     option(SUNSHINE_USE_LEGACY_INPUT  # TODO: Remove this legacy option after the next stable release
-            "Use the legacy virtual input implementation." OFF)
+            "Use the legacy virtual input implementation." ON)
 endif()
