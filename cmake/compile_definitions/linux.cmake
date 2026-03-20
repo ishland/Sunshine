@@ -224,6 +224,12 @@ else()
     message(STATUS "Tray icon disabled")
 endif()
 
+# revert begin - legacy input
+if(${SUNSHINE_USE_LEGACY_INPUT})
+    list(APPEND PLATFORM_TARGET_FILES "${CMAKE_SOURCE_DIR}/src/platform/linux/input/legacy_input.cpp")
+else()
+# revert end - legacy input
+
 # These need to be set before adding the inputtino subdirectory in order for them to be picked up
 set(LIBEVDEV_CUSTOM_INCLUDE_DIR "${EVDEV_INCLUDE_DIR}")
 set(LIBEVDEV_CUSTOM_LIBRARY "${EVDEV_LIBRARY}")
@@ -242,6 +248,8 @@ list(APPEND PLATFORM_TARGET_FILES ${INPUTTINO_SOURCES})
 if(EXTERNAL_PROJECT_LIBEVDEV_USED)
     add_dependencies(libinputtino libevdev)
 endif()
+
+endif() # revert - legacy input
 
 # AppImage and Flatpak
 if (${SUNSHINE_BUILD_APPIMAGE})
